@@ -43,6 +43,17 @@ app.get('/coins', function(req, res) {
     .catch(err => res.json({ error: err }))
 });
 
+app.get("/born", (req, res) => {
+  const apiUrl = `https://api.github.com/users/JulCD`;
+
+  axios
+    .get(apiUrl)
+    .then((response) => {
+      res.json({ bornTime: response.data });
+    })
+    .catch((err) => res.json({ error: err }));
+});
+
 /**********************
  * Example get method *
  **********************/
